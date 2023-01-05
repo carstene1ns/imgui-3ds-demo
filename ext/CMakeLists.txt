@@ -8,7 +8,7 @@ add_library(imgui STATIC
 )
 target_include_directories(imgui PUBLIC imgui)
 target_compile_definitions(imgui PUBLIC
-  #IMGUI_DISABLE_OBSOLETE_KEYIO # <- need to rewrite button logic first
+  IMGUI_DISABLE_OBSOLETE_KEYIO
   IMGUI_DISABLE_OBSOLETE_FUNCTIONS
 )
 
