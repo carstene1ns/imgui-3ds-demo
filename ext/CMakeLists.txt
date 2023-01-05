@@ -1,12 +1,19 @@
 
-add_library(imgui STATIC
-  imgui/imgui.cpp
-  imgui/imgui_demo.cpp
-  imgui/imgui_draw.cpp
-  imgui/imgui_tables.cpp
-  imgui/imgui_widgets.cpp
+include(FetchContent)
+FetchContent_Declare(imgui
+  URL https://github.com/ocornut/imgui/archive/refs/tags/v1.89.1.tar.gz
+  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
-target_include_directories(imgui PUBLIC imgui)
+FetchContent_MakeAvailable(imgui)
+
+add_library(imgui STATIC
+  ${imgui_SOURCE_DIR}/imgui.cpp
+  ${imgui_SOURCE_DIR}/imgui_demo.cpp
+  ${imgui_SOURCE_DIR}/imgui_draw.cpp
+  ${imgui_SOURCE_DIR}/imgui_tables.cpp
+  ${imgui_SOURCE_DIR}/imgui_widgets.cpp
+)
+target_include_directories(imgui PUBLIC ${imgui_SOURCE_DIR})
 target_compile_definitions(imgui PUBLIC
   IMGUI_DISABLE_OBSOLETE_KEYIO
   IMGUI_DISABLE_OBSOLETE_FUNCTIONS
